@@ -9,6 +9,7 @@ categories: [release]
 
 ###1.组件使用
 在Vue中，我可以使用Vue.extend()创建一个组件构造器(和react有些相似)
+
 ```js
 	var MyComponent = Vue.extend({
 		//可以来放模板
@@ -22,12 +23,14 @@ categories: [release]
 	Vue.component('my-component',MyComponent)
 ```
 在注册之后，组件便可以用在父实例的模块中，以自定义元素 < my-component > 的形式使用
+
 ```html
 	<div id="example">
   		<my-component></my-component>
 	</div>
 ```
 代码如下：
+
 ```js
     //定义
     var MyComponent = Vue.extend({
@@ -46,6 +49,7 @@ categories: [release]
 ###2.props用来传输数据
 组件实例的作用域是孤立的，但是我们可以使用props把数据传给子组件
 props是组件数据里的一个字段，期望从父组件传下来，子组件需要显式的声明props
+
 ```js
    Vue.component('child',{
    		//声明props
@@ -56,11 +60,12 @@ props是组件数据里的一个字段，期望从父组件传下来，子组件
 ```
 ###3.自定实例
 Vue 实例实现了一个自定义事件接口，用于在组件树中通信，每个 Vue 实例都是一个事件触发器：
-* 使用 $on() 监听事件；
-* 使用 $emit() 在它上面触发事件；
-* 使用 $dispatch() 派发事件，事件沿着父链冒泡；
-* 使用 $broadcast() 广播事件，事件向下传导给所有的后代。
+>使用 $on() 监听事件；
+>使用 $emit() 在它上面触发事件；
+>使用 $dispatch() 派发事件，事件沿着父链冒泡；
+>使用 $broadcast() 广播事件，事件向下传导给所有的后代。
 子组件监听用户的输入，然后再将消息发送出去，父组件接收到数据后，将这些消息做处理
+
 ```js
     //注册一个子组件
     //将消息派发出去
