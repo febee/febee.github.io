@@ -1,0 +1,113 @@
+---
+layout: post
+title:  "Vue.js 第二说"
+author: xiaoyang
+categories: [release]
+---
+
+# Vue组件使用
+
+###1.组件使用
+在Vue中，我可以使用Vue.extend()创建一个组件构造器(和react有些相似)
+```js
+	var MyComponent = Vue.extend({
+		//可以来放模板
+		template: ""
+	})
+```
+要把这个构造器注册用作组件，我们需要使用Vue.component(tag, constructor)来注册
+
+```js
+	//全局注册  tag为my-component
+	Vue.component('my-component',MyComponent)
+```
+在注册之后，组件便可以用在父实例的模块中，以自定义元素 < my-component > 的形式使用
+```html
+	<div id="example">
+  		<my-component></my-component>
+	</div>
+```
+代码如下：
+```js
+    //定义
+    var MyComponent = Vue.extend({
+		//可以来放模板
+		template: "<div>define my component</div>"
+	})
+
+	//注册
+	Vue.component('my-component',MyComponent)
+
+	//创建实例根
+	new Vue({
+		el: "#app"
+	})
+```
+###2.props用来传输数据
+组件实例的作用域是孤立的，但是我们可以使用props把数据传给子组件
+props是组件数据里的一个字段，期望从父组件传下来，子组件需要显式的声明props
+```js
+   Vue.component('child',{
+   		//声明props
+   		props: ["msg"],
+   		//props可以在模板中使用
+		template: "<div>{{msg}}</div>"
+   })
+```
+###3.自定实例
+Vue 实例实现了一个自定义事件接口，用于在组件树中通信，每个 Vue 实例都是一个事件触发器：
+* 使用 $on() 监听事件；
+* 使用 $emit() 在它上面触发事件；
+* 使用 $dispatch() 派发事件，事件沿着父链冒泡；
+* 使用 $broadcast() 广播事件，事件向下传导给所有的后代。
+子组件监听用户的输入，然后再将消息发送出去，父组件接收到数据后，将这些消息做处理
+```js
+    //注册一个子组件
+    //将消息派发出去
+    Vue.component('child',{
+		template: "#child-template",
+		data: function(){
+			return {msg: "hello"}
+		},
+		methods: {
+			notify: function(){
+				if(this.msg.trim()){
+					this.$dispatch('child-msg', this.msg)
+					this.msg = ''
+				}
+			}
+		}
+    })
+
+    //启动父组件
+    //将接到的消息显示
+    var parent = new Vue({
+		el: "#events-el",
+		data: {
+			messages: []
+		},
+		//events会调用$on
+		events: {
+			"child-msg": function(msg){
+				// 事件回调内的 `this` 自动绑定到注册它的实例上
+				this.messages.push(msg)
+			}
+		}
+    })
+```
+组件模板
+
+```html
+	<div class="example">
+		<!-- 子模板 -->
+		<template id="child-template">
+			<input type="text" v-model="msg" />
+			<button v-on:click="notify()" >dispatch event</button>
+		</template>
+		<!-- 父模板 -->
+		<div id="events-el">
+			<p>messages: {{messages | join}}</p>
+			<child></child>
+		</div>
+	</div>
+```
