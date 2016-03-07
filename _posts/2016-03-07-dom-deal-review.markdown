@@ -29,53 +29,50 @@ jquery给我们带来便利是命令式的Dom操作，以及一些全局方法�
 ###node 的属性操作:
 
 任何操作之前你要获取结点：
-```js
-getElementById() //单独的DOM对象
-getElementsByTagName() //DOM对象的集合
-getElementsByName() //DOM对象的集合
-getElementsByClassName() //DOM对象的集合
-```
+
+    getElementById() //单独的DOM对象
+    getElementsByTagName() //DOM对象的集合
+    getElementsByName() //DOM对象的集合
+    getElementsByClassName() //DOM对象的集合
 
 有了DOM对象，我就可以操作我自身属性了：
-```js
-innerHTML
-innerText //这两个只有body一下才有的
-parentNode
-firstChild
-lastChild
-nextSibling
-previousSibling
-childNodes
-attributes
-style 
-tagName
-```
+
+    innerHTML
+    innerText //这两个只有body一下才有的
+    parentNode
+    firstChild
+    lastChild
+    nextSibling
+    previousSibling
+    childNodes
+    attributes
+    style 
+    tagName
 
 对该节点的操作
-```js
-replaceChild() //结点交还
-setAttribute() 
-getAttribute() 
-removeChild(element)
-removeAttribute()
-```
+
+    replaceChild() //结点交还
+    setAttribute() 
+    getAttribute() 
+    removeChild(element)
+    removeAttribute()
+
 新增结点：
-```js
-document.createElement()
-createTextNode()
-appendChild(element)
-insertBefore(newelement,childelement) //在指定子节点childelement之前插入childelement。
-```
+
+    document.createElement()
+    createTextNode()
+    appendChild(element)
+    insertBefore(newelement,childelement) //在指定子节点childelement之前插入childelement。
 
 ## 小结
 
 因为react组件的模块化，所以涉及DOM操作也不会复杂，感觉能用到的就这些。对了你想要获取组件的根节点怎么办<br />：
 只需要：ReactDom.findDOMNode(this)即可：
-```js
-componentDidMount() {
-    console.log(ReactDom.findDOMNode(this));
-}
-```
+
+    componentDidMount() {
+        console.log(ReactDom.findDOMNode(this));
+    }
+
 
 
 
