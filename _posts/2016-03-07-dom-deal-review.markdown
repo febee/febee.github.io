@@ -11,11 +11,12 @@ categories: [release]
 
 ## 为什么？也许你会问,jquery不是用的挺好的吗？
 
-No！No！No！随着react在项目中慢慢普及，也许你会慢慢的体会到，jquery将淡出我们的事业。
-jquery给我们带来便利就是命令式的Dom操作，以及一些全局方法（如ajax，extend等，），当然
+No！No！No！随着react在项目中慢慢普及，你将会慢慢的体会到，你对jquery的依赖程度会越来越低。
+
+jquery给我们带来便利是命令式的Dom操作，以及一些全局方法（如ajax，extend等，），当然
 还有一大堆别人的轮子。
 
-好的react Coding将会让你免去dom的操作，而且CommonJS的规范可以放你随心所欲的import其他
+但是，好的react Coding将会让你免去dom的操作，而且CommonJS的规范可以放你随心所欲的import其他
 独立小巧的库（如fetch替代ajax），而不是一大坨jquery源码。    
 
 ## 哪然后哩？
