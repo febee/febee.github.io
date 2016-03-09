@@ -40,51 +40,52 @@ react的react-dom,react-addons-css-transition-group....，当然
     
 ### arrays
 
-    _.chunck(array,[size=0]);
+_.chunck(array,[size=0]);
 
-    ```js
-        _.chunk(['a','b','c','d'],4);//=>[['a','b','c','d']]
-        _.chunk(['a','b','c','d'],0);//=>[]
-        _.chunk(['a','b','c','d'],2);//=>[['a','b'],['c','d']];
-    ```
+```js
+    _.chunk(['a','b','c','d'],4);//=>[['a','b','c','d']]
+    _.chunk(['a','b','c','d'],0);//=>[]
+    _.chunk(['a','b','c','d'],2);//=>[['a','b'],['c','d']];
+```
 
     
-    _.compact(array);创建一个新数组，把所有为假的元素去除，识别为
-    假的元素有 false,null,0,"",undefined,NaN
+_.compact(array);创建一个新数组，把所有为假的元素去除，识别为
+假的元素有 false,null,0,"",undefined,NaN
 
-    ```js
-        _.compact([0,1,false,NaN,'',undefined,null])//=>[1]
-    ```
-
-
-    _.concat(array,[values]);把一个数组和其他数组或其他额外的值链接起来。
-
-    ```js
-        var array1 = [1];
-        var other1 = _.concat(array1,2,[3],[[4]],{a:1});
-        console.log(array1);//[1],说明这个方法不会污染原来的数组
-        console.log(other1);//[1,2,3,[4],{a:1}]
-
-        /**
-         * 对比array对象的concat方法
-         */
-        var array2 = [1];
-        var other2 = array2.concat(2,[3],[[4]],{a:1});
-        console.log(array2);//[1],同样不会污染原来的数组
-        console.log(other2);//[1,2,3,[4],{a:1}]和上面的几乎一样。
-    ```
+```js
+    _.compact([0,1,false,NaN,'',undefined,null])//=>[1]
+```
 
 
-    _.difference(array,[values]);//用第一个数组去和后面的值比较，比较完之后不同的留下，有相同的去掉，
-
-    ```js
-        console.log(_.difference([3,2,1],[4,2],[22,44],[1]));//=》[1]
-    ```
+_.concat(array,[values]);把一个数组和其他数组或其他额外的值链接起来。
 
 
-    _.differenceBy(array,[values],[iteratee=_.identity]);和上面的一样，只是为
-    每个元素提供了一个钩子（函数，对象，或字符串~~对象，字符串做钩子还是第一次
-    见，）
+```js
+    var array1 = [1];
+    var other1 = _.concat(array1,2,[3],[[4]],{a:1});
+    console.log(array1);//[1],说明这个方法不会污染原来的数组
+    console.log(other1);//[1,2,3,[4],{a:1}]
+
+    /**
+     * 对比array对象的concat方法
+     */
+    var array2 = [1];
+    var other2 = array2.concat(2,[3],[[4]],{a:1});
+    console.log(array2);//[1],同样不会污染原来的数组
+    console.log(other2);//[1,2,3,[4],{a:1}]和上面的几乎一样。
+```
+
+
+_.difference(array,[values]);//用第一个数组去和后面的值比较，比较完之后不同的留下，有相同的去掉，
+
+```js
+    console.log(_.difference([3,2,1],[4,2],[22,44],[1]));//=》[1]
+```
+
+
+_.differenceBy(array,[values],[iteratee=_.identity]);和上面的一样，只是为
+每个元素提供了一个钩子（函数，对象，或字符串~~对象，字符串做钩子还是第一次
+见，）
     
     ```js
         console.log(_.differenceBy([3.1,2.9,8.1],[3.0],Math.floor));//=>[2.9,8.1]
@@ -93,19 +94,18 @@ react的react-dom,react-addons-css-transition-group....，当然
     ```
 
 
-    _.differenceWith(array,[values],[comparator]);这个方法和difference很像，只是这个方法提供了
-    钩子函数比较两个参数
+_.differenceWith(array,[values],[comparator]);这个方法和difference很像，只是这个方法提供了钩子函数比较两个参数
 
 ```js
     var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
 
     console.log(_.differenceWith(objects, [{ 'x': 1, 'y': 2 }], _.isEqual));
     //=>[{'x':2,'y':1}],这边是一个对象比较的问题，如果按常规比较，{}!={};但是实际情况下，我们需要
-    {}=={}，及他的键值相等。_.isEqual就是这个作用。
+    //{}=={}，及他的键值相等。_.isEqual就是这个作用。
 ```
 
 
-    _.drop(array,[n=1]);相当于array的slice，从第n个元素开始（之后）切割数组（不会影响到原来的数组，返回一个新数组）
+_.drop(array,[n=1]);相当于array的slice，从第n个元素开始（之后）切割数组（不会影响到原来的数组，返回一个新数组）
 
 ```js
     console.log(_.drop([1,2,3,4],1));//[2,3,4]
@@ -113,7 +113,7 @@ react的react-dom,react-addons-css-transition-group....，当然
     console.log(_.drop([1,2,3,4],5));//[]
 ```
 
-    _.dropRight(array, [n=1]);和上面的一样，不过刚才是从左边开始，现在是从右边开始
+_.dropRight(array, [n=1]);和上面的一样，不过刚才是从左边开始，现在是从右边开始
 
 ```js
     console.log(_.dropRight([1,2,3,4],1));//[1,2,3]
@@ -122,7 +122,7 @@ react的react-dom,react-addons-css-transition-group....，当然
 ```
 
 
-    _.dropRightWhile(array, [predicate=_.identity])还是和上面一样，切割数组知道predicate返回false
+_.dropRightWhile(array, [predicate=_.identity])还是和上面一样，切割数组知道predicate返回false
 
 ```js
     
@@ -151,11 +151,11 @@ react的react-dom,react-addons-css-transition-group....，当然
 ```
 
 
-    _.dropWhile(array, [predicate=_.identity]);和上面几乎一样，只是这个从左边开始。
+_.dropWhile(array, [predicate=_.identity]);和上面几乎一样，只是这个从左边开始。
 
-    
 
-    _.fill(array, value, [start=0], [end=array.length]);用value去填充array的元素，从start开始到end结束（不包括开始哪一位）
+
+_.fill(array, value, [start=0], [end=array.length]);用value去填充array的元素，从start开始到end结束（不包括开始哪一位）
 
 ```js
     var array = [1,2,3];
