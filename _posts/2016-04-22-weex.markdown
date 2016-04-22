@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "weex 知识点"
+title:  "weex"
 author: xiaoyang
 categories: [release]
 ---
